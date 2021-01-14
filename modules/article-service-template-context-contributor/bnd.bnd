@@ -1,0 +1,3 @@
+Bundle-Name: article-service-template-context-contributor
+Bundle-SymbolicName: com.liferay.demo.asset.article.service.template.context.contributor
+Bundle-Version: 1.0.0
