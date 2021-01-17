@@ -6,7 +6,7 @@ Built with [Liferay Workspace](https://help.liferay.com/hc/en-us/articles/360029
 
 ## Usage
 
-Follow the steps below to build and deploy or copy the modules from the [releases](/releases/latest) page to your Liferay's deploy folder.
+Follow the steps below to build and deploy or copy the modules from the [releases](../../releases/latest) page to your Liferay's deploy folder.
 
 The "Article Service Template Context Contributor" makes a `articleService` object available in your freemarker templates. This object exposes a number of different methods to let you easily get the rendered content of a web content article.
 
