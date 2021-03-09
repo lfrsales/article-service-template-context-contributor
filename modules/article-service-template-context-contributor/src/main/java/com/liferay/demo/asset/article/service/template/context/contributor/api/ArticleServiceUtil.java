@@ -42,7 +42,7 @@ public class ArticleServiceUtil {
 
 		_groupId = _themeDisplay.getSiteGroupId();
 
-		_languageId = _themeDisplay.getI18nLanguageId();
+		_languageId = _themeDisplay.getLanguageId();
 
 		_portletRequestModel = getPortletRequestModel(_httpServletRequest);
 	}
