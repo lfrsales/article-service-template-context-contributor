@@ -47,36 +47,52 @@ public class ArticleServiceUtil {
 		_portletRequestModel = getPortletRequestModel(_httpServletRequest);
 	}
 
-	public String getContentByClassPK(long classPK) throws PortalException {
-		JournalArticle journalArticle = getArticleByClassPK(classPK);
+	public String getContentByClassPK(long classPK) {
+		try {
+			JournalArticle journalArticle = getArticleByClassPK(classPK);
 
-		return getContent(journalArticle, journalArticle.getDDMTemplateKey());
+			return getContent(
+				journalArticle, journalArticle.getDDMTemplateKey());
+		}
+		catch (Exception e) {
+			return getNoArticleWithClassPKMessage(classPK);
+		}
 	}
 
-	public String getContentByClassPK(long classPK, String ddmTemplateKey)
-		throws PortalException {
+	public String getContentByClassPK(long classPK, String ddmTemplateKey) {
+		try {
+			JournalArticle journalArticle = getArticleByClassPK(classPK);
 
-		JournalArticle journalArticle = getArticleByClassPK(classPK);
-
-		return getContent(journalArticle, ddmTemplateKey);
+			return getContent(journalArticle, ddmTemplateKey);
+		}
+		catch (Exception e) {
+			return getNoArticleWithClassPKMessage(classPK);
+		}
 	}
 
-	public String getContentByPrimaryKey(String primaryKey)
-		throws PortalException {
-
-		return JournalArticleServiceUtil.getArticleContent(
-			_groupId, primaryKey, _languageId, _portletRequestModel,
-			_themeDisplay);
+	public String getContentByPrimaryKey(String primaryKey) {
+		try {
+			return JournalArticleServiceUtil.getArticleContent(
+				_groupId, primaryKey, _languageId, _portletRequestModel,
+				_themeDisplay);
+		}
+		catch (Exception e) {
+			return getNoArticleWithPrimaryKeyMessage(primaryKey);
+		}
 	}
 
 	public String getContentByPrimaryKey(
-			String primaryKey, String ddmTemplateKey)
-		throws PortalException {
+		String primaryKey, String ddmTemplateKey) {
 
-		JournalArticle journalArticle = JournalArticleServiceUtil.getArticle(
-			_groupId, primaryKey);
+		try {
+			JournalArticle journalArticle =
+				JournalArticleServiceUtil.getArticle(_groupId, primaryKey);
 
-		return getContent(journalArticle, ddmTemplateKey);
+			return getContent(journalArticle, ddmTemplateKey);
+		}
+		catch (Exception e) {
+			return getNoArticleWithPrimaryKeyMessage(primaryKey);
+		}
 	}
 
 	protected JournalArticle getArticleByClassPK(long classPK) {
@@ -90,6 +106,14 @@ public class ArticleServiceUtil {
 		return JournalArticleLocalServiceUtil.getArticleContent(
 			journalArticle, ddmTemplateKey, Constants.VIEW, _languageId,
 			_portletRequestModel, _themeDisplay);
+	}
+
+	protected String getNoArticleWithClassPKMessage(long classPK) {
+		return "Unable to get article with classPK: " + classPK + ".";
+	}
+
+	protected String getNoArticleWithPrimaryKeyMessage(String primaryKey) {
+		return "Unable to get article with primaryKey: " + primaryKey + ".";
 	}
 
 	protected PortletRequestModel getPortletRequestModel(
