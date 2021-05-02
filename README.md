@@ -36,7 +36,7 @@ It's common when using Liferay to want to change how web content is rendered ins
 </#if>
 ```
 
-Alternatively, this module creates a [Template Context Contributor](https://help.liferay.com/hc/en-us/articles/360029006112-Template-Context-Contributor) that provides access to a few simplified methods for rendering web content. This keeps you from needing to expose serviceLocator and also simplifies the api, removing the need to pass large object like themeDisplay. 
+Alternatively, this module creates a [Template Context Contributor](https://help.liferay.com/hc/en-us/articles/360029006112-Template-Context-Contributor) that provides access to a few simplified methods for rendering web content. This keeps you from needing to expose serviceLocator and also simplifies the api, removing the need to pass large object like themeDisplay.
 
 ### Example Usage in a Web Content Template
 
@@ -84,3 +84,23 @@ liferay.workspace.home.dir=/path/to/liferay/home
 ```
 
 ## Issues & Questions Welcome
+
+## Contributing Guidelines
+
+Pull requests welcome.
+
+### Releasing
+
+Releases are handled using Github actions.
+
+To release a new version do the following:
+
+1. Create a git tag.
+
+	1. `git tag v0.0.1`
+
+1. Push the tag to Github.
+
+	1. `git push origin v0.0.1`
+
+The Github action will be triggered and will attach all assets to the release.
